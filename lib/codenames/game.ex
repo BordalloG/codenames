@@ -26,6 +26,7 @@ defmodule Codenames.Game do
           index == 24 -> %Card{word: word, color: :black, status: :hidden}
         end
       end)
+      |> Enum.shuffle()
 
     %Board{cards: cards}
   end
