@@ -17,9 +17,12 @@ defmodule Codenames.Application do
       # Start a worker by calling: Codenames.Worker.start_link(arg)
       # {Codenames.Worker, arg},
       # Start to serve requests, typically the last entry
-      CodenamesWeb.Endpoint
+      CodenamesWeb.Endpoint,
+      # Start the Server Supervisor
+      Codenames.Server.Supervisor
     ]
 
+    :ets.new(:server_name, [:set, :public, :named_table])
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Codenames.Supervisor]
