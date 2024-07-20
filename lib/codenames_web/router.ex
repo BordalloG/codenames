@@ -18,6 +18,9 @@ defmodule CodenamesWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :home
+
+    live "/match/new", MatchLive.New
+    live "/match/:id", MatchLive.Show
   end
 
   # Other scopes may use custom stacks.
