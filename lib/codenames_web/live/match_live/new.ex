@@ -5,6 +5,7 @@ defmodule CodenamesWeb.MatchLive.New do
 
   def mount(_params, _session, socket) do
     {:ok, match} = Server.Supervisor.start_match_server()
+
     socket =
       socket
       |> put_flash(:info, "New match created!")

@@ -19,8 +19,18 @@ defmodule CodenamesWeb.Router do
 
     get "/", PageController, :home
 
-    live "/match/new", MatchLive.New
-    live "/match/:id", MatchLive.Show
+    live "/player/new", PlayerLive.New
+    post "/player/new", PlayerSessionController, :create
+  end
+
+  scope "/match", CodenamesWeb do
+    pipe_through [:browser]
+
+    live_session :match_session,
+      on_mount: [{CodenamesWeb.PlayerHook, :ensure_player}] do
+      live "/new", MatchLive.New
+      live "/:id", MatchLive.Show
+    end
   end
 
   # Other scopes may use custom stacks.

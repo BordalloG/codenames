@@ -1,4 +1,12 @@
 <.flash_group flash={@flash} />
-<div class="w-full h-screen flex justify-center items-center">
-    <.live_component module={CodenamesWeb.Match.BoardLive} board={@match.board} id="board" />
+<div class="w-full h-screen flex justify-center items-center bg-emerald-950">
+  <%!-- <%= @current_player.nick %> --%>
+  <.team color={:orange} players={@match.teams.orange} current_player={@current_player} />
+  <.live_component
+    module={CodenamesWeb.Match.BoardLive}
+    board={@match.board}
+    current_player={@current_player}
+    id="board"
+  />
+  <.team color={:blue} players={@match.teams.blue} current_player={@current_player} />
 </div>

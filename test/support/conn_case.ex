@@ -35,4 +35,14 @@ defmodule CodenamesWeb.ConnCase do
     Codenames.DataCase.setup_sandbox(tags)
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
+
+  def set_up_player(conn, nick) do
+    conn
+    |> Phoenix.ConnTest.init_test_session(%{})
+    |> Plug.Conn.put_session(:current_player, %Codenames.Game.Player{
+      id: UUID.uuid4(),
+      nick: nick,
+      role: :operative
+    })
+  end
 end

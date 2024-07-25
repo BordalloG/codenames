@@ -2,9 +2,9 @@ defmodule Codenames.Server.Supervisor do
   @moduledoc """
       Supervisor responsible for creating and killing matchs
   """
-alias Codenames.Game.Match
-alias Codenames.Server.ServerName
-alias Codenames.Server
+  alias Codenames.Game.Match
+  alias Codenames.Server.ServerName
+  alias Codenames.Server
 
   use DynamicSupervisor
 

@@ -19,7 +19,9 @@ defmodule Codenames.Application do
       # Start to serve requests, typically the last entry
       CodenamesWeb.Endpoint,
       # Start the Server Supervisor
-      Codenames.Server.Supervisor
+      Codenames.Server.Supervisor,
+      # Presence tracking
+      CodenamesWeb.Presence
     ]
 
     :ets.new(:server_name, [:set, :public, :named_table])
